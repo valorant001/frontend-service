@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import NavigationBar from "../Components/Navbar";
-import Header from "../Components/Header";
-import LiveCampaign from "../Components/LiveCampaign";
-import ShowCaseWork from "../Components/ShowCaseWork";
-import WhyAdReacher from "../Components/WhyAdReacher";
-import HowitWorks from "../Components/HowitWorks";
-import Intregration from "../Components/Intregration";
-import EstimateYourReach from "../Components/EstimateYourReach";
-import Pricing from "../Components/Pricing";
-import FAQ from "../Components/FAQ";
-import LoveLocal from "../Components/LoveLocal";
-import StartGrowing from "../Components/StartGrowing";
-import Aboutus from "../Components/Aboutus";
-import Footer from "../Components/Footer";
+import NavigationBar from "../Components/HomePage_components/Navbar";
+import Header from "../Components/HomePage_components/Header";
+import LiveCampaign from "../Components/HomePage_components/LiveCampaign";
+import ShowCaseWork from "../Components/HomePage_components/ShowCaseWork";
+import WhyAdReacher from "../Components/HomePage_components/WhyAdReacher";
+import HowitWorks from "../Components/HomePage_components/HowitWorks";
+import Intregration from "../Components/HomePage_components/Intregration";
+import EstimateYourReach from "../Components/HomePage_components/EstimateYourReach";
+import Pricing from "../Components/HomePage_components/Pricing";
+import FAQ from "../Components/HomePage_components/FAQ";
+import LoveLocal from "../Components/HomePage_components/LoveLocal";
+import StartGrowing from "../Components/HomePage_components/StartGrowing";
+import Aboutus from "../Components/HomePage_components/Aboutus";
+import Footer from "../Components/HomePage_components/Footer";
 
 export default function LandingPage() {
   
