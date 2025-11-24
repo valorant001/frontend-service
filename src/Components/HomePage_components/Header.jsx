@@ -15,8 +15,8 @@ const Header = () => {
           transition={{ delay: 0.1, duration: 0.6 }}
           className="text-4xl md:text-6xl font-extrabold max-w-4xl mx-auto text-white"
         >
-          Advertise Everywhere —{' '}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">In One Click</span>
+         Run Your Ads Easily —{' '}
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">No Expertise Needed</span>
         </motion.h1>
 
         <motion.p
@@ -25,7 +25,7 @@ const Header = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto"
         >
-          A premium AI-powered platform that helps every business owner create, launch, and manage ads across WhatsApp, Meta, Instagram & Google — effortlessly.
+          AdReacher helps anyone create and publish ads across WhatsApp, Meta, Instagram & Google in minutes.
         </motion.p>
 
         <motion.div
@@ -35,7 +35,7 @@ const Header = () => {
           className="mt-10 flex justify-center gap-4"
         >
           <button className="px-8 py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-xl hover:scale-[1.02] transition">Get started</button>
-          <button className="px-8 py-3 bg-[#0B0B0B] rounded-xl border border-white/8 hover:bg-[#0E0E0E] transition text-gray-300">Book demo</button>
+          {/* <button className="px-8 py-3 bg-[#0B0B0B] rounded-xl border border-white/8 hover:bg-[#0E0E0E] transition text-gray-300">Book demo</button> */}
         </motion.div>
 
         <motion.div

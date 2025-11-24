@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavigationBar = () => {
+  
+  const navigate = useNavigate();
   return (
          <motion.nav
         initial={{ y: -30, opacity: 0 }}
@@ -18,7 +21,9 @@ const NavigationBar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="px-4 py-2 text-gray-300 hover:text-white transition">Sign in</button>
+          <Link className="px-4 py-2 text-white transition"
+          to={"/login"}
+          >Sign in</Link>
           <button className="px-5 py-2 rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:opacity-95 transition">Sign up</button>
         </div>
       </motion.nav>
