@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const navItems = [
   { key: "dashboard", label: "Dashboard", icon: DashboardIcon },
-  { key: "create", label: "Create Ad", icon: CreateIcon },
-  { key: "myads", label: "My Ads", icon: AdsIcon },
+  { key: "createAds", label: "Create Ad", icon: CreateIcon },
+  { key: "myAds", label: "My Ads", icon: AdsIcon },
   { key: "analytics", label: "Analytics", icon: AnalyticsIcon },
   { key: "wallet", label: "Wallet", icon: WalletIcon },
   { key: "settings", label: "Settings", icon: SettingsIcon },
@@ -14,7 +15,7 @@ export default function SidebarLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("dashboard");
-
+  const navigate = useNavigate();
   const sidebarVariants = {
     hidden: (i) => ({
       opacity: 0,
@@ -56,6 +57,7 @@ export default function SidebarLayout({ children }) {
                 onNavigate={(k) => {
                   setActive(k);
                   setMobileOpen(false);
+                  navigate(`/${k}`);
                 }}
               />
             </motion.div>
@@ -116,7 +118,10 @@ export default function SidebarLayout({ children }) {
                   item={it}
                   collapsed={collapsed}
                   active={active === it.key}
-                  onClick={() => setActive(it.key)}
+                  onClick={() => {
+                    setActive(it.key);
+                    navigate(`/${it.key}`);
+                  }}
                 />
               ))}
             </nav>
@@ -224,7 +229,7 @@ export default function SidebarLayout({ children }) {
         </div>
 
         {/* Content area */}
-        <div className="p-6 md:p-8">
+        <div className="p-2 md:p-10">
           {children}
         </div>
       </main>
@@ -254,7 +259,9 @@ function MobileSidebar({ collapsed, active, onNavigate }) {
               item={it}
               collapsed={false}
               active={active === it.key}
-              onClick={() => onNavigate(it.key)}
+              onClick={() => 
+                onNavigate(it.key)
+              }
             />
           ))}
         </nav>

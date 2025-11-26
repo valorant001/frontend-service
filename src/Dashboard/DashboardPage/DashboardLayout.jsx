@@ -59,7 +59,7 @@ const DashboardLayout = ({ children }) => {
                      <Link  href="#" className="text-[1rem] p-2 rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:opacity-90 transition">Post New Ad</Link>
                     </div>
                    </div>
-                   <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 text-[2rem] font-bold gap-3 p-2 justify-between items-start">
+                   <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 text-[2rem] font-bold gap-3  justify-between items-start">
                     {/* <TabLayout></TabLayout> */}
                     <motion.div 
                     

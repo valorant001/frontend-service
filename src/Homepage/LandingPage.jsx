@@ -16,12 +16,7 @@ import Aboutus from "../Components/HomePage_components/Aboutus";
 import Footer from "../Components/HomePage_components/Footer";
 
 export default function LandingPage() {
-  
- 
-
-
-
-  return (
+ return (
     <div className="min-h-screen w-full bg-[#050506] text-gray-200 font-sans leading-relaxed antialiased">
       <NavigationBar/>
       <Header/>
