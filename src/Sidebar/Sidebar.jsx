@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { X } from 'lucide-react';
 
 const navItems = [
   { key: "dashboard", label: "Dashboard", icon: DashboardIcon },
@@ -52,7 +53,7 @@ export default function SidebarLayout({ children }) {
               className="fixed inset-y-0 left-0 w-72 z-50 md:hidden"
             >
               <MobileSidebar
-                collapsed={false}
+                collapsed={mobileOpen}
                 active={active}
                 onNavigate={(k) => {
                   setActive(k);
@@ -156,9 +157,8 @@ export default function SidebarLayout({ children }) {
       </aside>
 
       {/* MAIN AREA */}
-      <main className={`flex-1 min-h-screen transition-all duration-300 ${
-    collapsed ? "md:ml-20" : "md:ml-72"
-  }`}>
+      <main className={`flex-1 min-h-screen transition-all duration-300 ${collapsed ? "md:ml-20" : "md:ml-72"
+        }`}>
         {/* Top bar */}
         <div className="flex items-center justify-between px-4 md:px-6 py-3 border-b border-white/10 bg-black/40 backdrop-blur-sm">
           <div className="flex items-center gap-3">
@@ -242,13 +242,20 @@ function MobileSidebar({ collapsed, active, onNavigate }) {
   return (
     <div className="h-full bg-linear-to-b from-black/90 to-[#070708] border-r border-white/10 flex flex-col justify-between">
       <div>
-        <div className="px-4 py-5 flex items-center gap-3">
-          <div className="w-12 h-12 rounded-lg bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white text-xl shadow-lg border border-white/10">
-            AE
+        <div className="closebar flex items-center justify-between">
+          <div className="px-4 py-5 flex items-center gap-3">
+            <div className="w-12 h-12 rounded-lg bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white text-xl shadow-lg border border-white/10">
+              AE
+            </div>
+            <div className="ml-2">
+              <div className="text-lg font-bold text-white">AdEase</div>
+              <div className="text-xs text-gray-400">One-click ads</div>
+
+            </div>
           </div>
-          <div className="ml-2">
-            <div className="text-lg font-bold text-white">AdEase</div>
-            <div className="text-xs text-gray-400">One-click ads</div>
+          <div className="close mr-2">
+            <X onClick={() => setMobileOpen(false)}/>
+
           </div>
         </div>
 
@@ -259,7 +266,7 @@ function MobileSidebar({ collapsed, active, onNavigate }) {
               item={it}
               collapsed={false}
               active={active === it.key}
-              onClick={() => 
+              onClick={() =>
                 onNavigate(it.key)
               }
             />

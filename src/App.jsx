@@ -10,6 +10,8 @@ import CreateAds from './CreateAds/CreateAd'
 import Signup from './Auth/Signup'
 import MyAds from './MyAds/MyAds'
 import Analytics from './Analytics/Analytics'
+import WalletPage from './Wallet/Wallet'
+import Settings from './Settings/UsersSetting'
 
 
 
@@ -27,9 +29,8 @@ function App() {
         <Route path='/signup' element ={<Signup/>}/>
         <Route path='/myAds' element ={<MyAds/>}/>
         <Route path='/analytics' element ={<Analytics/>}/>
-     
-      {/* <Route path="/" element={<Dashboard />} />
-      <Route path="/login" element={<Login />} /> */}
+        <Route path='/wallet' element ={<WalletPage/>}/>
+        <Route path='/settings' element ={<Settings/>}/>
     </Routes>
     </>
   )
