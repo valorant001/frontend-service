@@ -12,7 +12,9 @@ const NavigationBar = () => {
         whileHover={{ backgroundColor: 'rgba(0,0,0,0.75)' }}
          className="w-full px-6 md:px-24 py-5 flex items-center justify-between bg-black/60 backdrop-blur-lg border-b border-white/6 sticky top-0 z-50 shadow-lg">
         <div className="flex items-center gap-4">
-          <div className="text-2xl font-bold tracking-tight text-white">AdEase</div>
+          <div className="w-30">
+            <img src="logo.png" alt="AdsReacher Logo" className="w-20 h-20 xl:scale-280 scale-210 ml-2"/>
+          </div>
           <div className="hidden md:flex items-center gap-6 text-sm text-gray-300 ml-6">
             <a href="#features" className="hover:text-white transition">Features</a>
             <a href="#how" className="hover:text-white transition">How it works</a>

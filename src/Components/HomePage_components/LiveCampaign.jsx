@@ -8,7 +8,7 @@ const LiveCampaign = () => {
     },
     {
       title: "Platform-Based Format",
-      description: "AdEase automatically adapts your ad for WhatsApp, Instagram & Google layouts.",
+      description: "AdsReacher automatically adapts your ad for WhatsApp, Instagram & Google layouts.",
     },
     {
       title: "Smart Copy Suggestions",
@@ -47,7 +47,7 @@ const LiveCampaign = () => {
           >
             <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-8 shadow-2xl">
               <img
-                src="livead.png"
+                src="ModernUI.png"
                 alt="Live Ad Preview"
                 className="rounded-2xl w-full"
               />

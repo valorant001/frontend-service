@@ -1,7 +1,7 @@
 const LoveLocal = () => {
     return (      <section className="px-6 md:px-24 py-28 bg-[#070707] border-t border-white/6">
         <h2 className="text-4xl font-bold text-center text-white mb-4">Loved by Local Businesses</h2>
-        <p className="text-gray-400 text-center mb-12">Real stories from real shop owners using AdEase every day.</p>
+        <p className="text-gray-400 text-center mb-12">Real stories from real shop owners using AdsReacher every day.</p>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-8 bg-[#0F0F10] rounded-2xl shadow-lg border border-white/6">

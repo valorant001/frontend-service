@@ -1,10 +1,22 @@
 import SidebarLayout from "../../Sidebar/Sidebar";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TabLayout from "../../Components/DashboardComponents/Tabs";
 import RunningAdsBox from "../../Components/DashboardComponents/RunningAdsBox";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 const DashboardLayout = ({ children }) => {
+      const [searchParams] = useSearchParams();
+
+      useEffect(()=>{
+    const code = searchParams.get("code");
+    const state = searchParams.get("state");
+
+    console.log("Code:", code);
+    console.log("State:", state);
+       
+      },[])
+
+
     const cardVariants = {
         hidden: (i) => ({
             opacity: 0,

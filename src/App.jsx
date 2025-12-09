@@ -12,11 +12,18 @@ import MyAds from './MyAds/MyAds'
 import Analytics from './Analytics/Analytics'
 import WalletPage from './Wallet/Wallet'
 import Settings from './Settings/UsersSetting'
+import PrivacyPolicy from './PrivacyAndPolicy/Policy'
+import TermsAndConditions from './TermsAndCondition/TandC'
+import ConnectFacebook from './TestingComponent'
+import useClarity from './helper/Clarity'
+import ManageAccounts from './LinkAccount/LinkAccount'
+import LinkAccountPage from './LinkAccount/LinkAccount'
 
 
 
 
 function App() {
+  useClarity();
   const [count, setCount] = useState(0)
 
   return (
@@ -31,6 +38,10 @@ function App() {
         <Route path='/analytics' element ={<Analytics/>}/>
         <Route path='/wallet' element ={<WalletPage/>}/>
         <Route path='/settings' element ={<Settings/>}/>
+        <Route path='/privacy-policy' element ={<PrivacyPolicy/>}/>
+        <Route path='/TermsAndConditions' element ={<TermsAndConditions/>}/>
+        <Route path='/Testing' element ={<ConnectFacebook/>}/>
+        <Route path='/link-accounts' element ={<LinkAccountPage/>}/>
     </Routes>
     </>
   )
