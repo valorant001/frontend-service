@@ -1,6 +1,6 @@
-const RunningAdsBox = () => {
+const RunningAdsBox = ({}) => {
     return(
-            <div className="w-full max-w-md  p-3  bg-[#0B0B0B] rounded-2xl shadow-sm border border-white/10 space-y-5">
+            <div className="w-full max-w-md  p-2  bg-[#0B0B0B] rounded-2xl shadow-sm border border-white/10 space-y-5">
       
       {/* Header */}
       <div className="flex items-center gap-2">

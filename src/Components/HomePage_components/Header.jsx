@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+  const navigate = useNavigate();
   return (
      <header className="relative  overflow-hidden px-6 md:px-24 pt-24 pb-20 text-center">
         <motion.div
@@ -34,7 +36,9 @@ const Header = () => {
           transition={{ delay: 0.3 }}
           className="mt-10 flex justify-center gap-4"
         >
-          <button className="px-8 py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-xl hover:scale-[1.02] transition">Get started</button>
+          <button
+          onClick={() => navigate('/login')}
+          className="px-8 py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-xl hover:scale-[1.02] transition">Get started</button>
           {/* <button className="px-8 py-3 bg-[#0B0B0B] rounded-xl border border-white/8 hover:bg-[#0E0E0E] transition text-gray-300">Book demo</button> */}
         </motion.div>
 

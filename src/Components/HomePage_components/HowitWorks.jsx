@@ -4,15 +4,15 @@ const HowItWorks = () => {
   const steps = [
     {
       title: "Upload Your Creative",
-      text: "Choose a product photo, banner, or poster. AdEase adjusts it automatically.",
+      text: "Choose a product photo, banner, or poster. AdsReacher adjusts it automatically.",
     },
     {
       title: "Write a Short Caption",
-      text: "Describe your offer in simple language. AdEase enhances it for engagement.",
+      text: "Describe your offer in simple language. AdsReacher enhances it for engagement.",
     },
     {
       title: "Set Your Budget",
-      text: "Pick any daily budget — even ₹50 works. AdEase optimizes it for performance.",
+      text: "Pick any daily budget — even ₹50 works. AdsReacher optimizes it for performance.",
     },
     {
       title: "Publish Everywhere",

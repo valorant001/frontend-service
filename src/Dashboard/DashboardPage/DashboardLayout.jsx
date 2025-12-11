@@ -1,10 +1,22 @@
 import SidebarLayout from "../../Sidebar/Sidebar";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TabLayout from "../../Components/DashboardComponents/Tabs";
 import RunningAdsBox from "../../Components/DashboardComponents/RunningAdsBox";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 const DashboardLayout = ({ children }) => {
+      const [searchParams] = useSearchParams();
+
+      useEffect(()=>{
+    const code = searchParams.get("code");
+    const state = searchParams.get("state");
+
+    console.log("Code:", code);
+    console.log("State:", state);
+       
+      },[])
+
+
     const cardVariants = {
         hidden: (i) => ({
             opacity: 0,
@@ -59,7 +71,7 @@ const DashboardLayout = ({ children }) => {
                      <Link  href="#" className="text-[1rem] p-2 rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:opacity-90 transition">Post New Ad</Link>
                     </div>
                    </div>
-                   <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 text-[2rem] font-bold gap-3 p-2 justify-between items-start">
+                   <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 text-[2rem] font-bold gap-3  justify-between items-start">
                     {/* <TabLayout></TabLayout> */}
                     <motion.div 
                     

@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { X } from 'lucide-react';
 
 const navItems = [
   { key: "dashboard", label: "Dashboard", icon: DashboardIcon },
-  { key: "create", label: "Create Ad", icon: CreateIcon },
-  { key: "myads", label: "My Ads", icon: AdsIcon },
+  { key: "createAds", label: "Create Ad", icon: CreateIcon },
+  { key: "myAds", label: "My Ads", icon: AdsIcon },
   { key: "analytics", label: "Analytics", icon: AnalyticsIcon },
   { key: "wallet", label: "Wallet", icon: WalletIcon },
+  { key: "link-accounts", label: "Link Accounts", icon: LinkAccounts },
   { key: "settings", label: "Settings", icon: SettingsIcon },
+  
 ];
 
 export default function SidebarLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("dashboard");
-
+  const navigate = useNavigate();
   const sidebarVariants = {
     hidden: (i) => ({
       opacity: 0,
@@ -51,11 +55,12 @@ export default function SidebarLayout({ children }) {
               className="fixed inset-y-0 left-0 w-72 z-50 md:hidden"
             >
               <MobileSidebar
-                collapsed={false}
+                collapsed={mobileOpen}
                 active={active}
                 onNavigate={(k) => {
                   setActive(k);
                   setMobileOpen(false);
+                  navigate(`/${k}`);
                 }}
               />
             </motion.div>
@@ -83,7 +88,7 @@ export default function SidebarLayout({ children }) {
               </div>
               {!collapsed && (
                 <div className="ml-2">
-                  <div className="text-lg font-bold text-white">AdEase</div>
+                  <div className="text-lg font-bold text-white">AdsReacher</div>
                   <div className="text-xs text-gray-400">One-click ads</div>
                 </div>
               )}
@@ -116,7 +121,10 @@ export default function SidebarLayout({ children }) {
                   item={it}
                   collapsed={collapsed}
                   active={active === it.key}
-                  onClick={() => setActive(it.key)}
+                  onClick={() => {
+                    setActive(it.key);
+                    navigate(`/${it.key}`);
+                  }}
                 />
               ))}
             </nav>
@@ -151,9 +159,8 @@ export default function SidebarLayout({ children }) {
       </aside>
 
       {/* MAIN AREA */}
-      <main className={`flex-1 min-h-screen transition-all duration-300 ${
-    collapsed ? "md:ml-20" : "md:ml-72"
-  }`}>
+      <main className={`flex-1 min-h-screen transition-all duration-300 ${collapsed ? "md:ml-20" : "md:ml-72"
+        }`}>
         {/* Top bar */}
         <div className="flex items-center justify-between px-4 md:px-6 py-3 border-b border-white/10 bg-black/40 backdrop-blur-sm">
           <div className="flex items-center gap-3">
@@ -224,7 +231,7 @@ export default function SidebarLayout({ children }) {
         </div>
 
         {/* Content area */}
-        <div className="p-6 md:p-8">
+        <div className="p-2 md:p-10">
           {children}
         </div>
       </main>
@@ -237,13 +244,20 @@ function MobileSidebar({ collapsed, active, onNavigate }) {
   return (
     <div className="h-full bg-linear-to-b from-black/90 to-[#070708] border-r border-white/10 flex flex-col justify-between">
       <div>
-        <div className="px-4 py-5 flex items-center gap-3">
-          <div className="w-12 h-12 rounded-lg bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white text-xl shadow-lg border border-white/10">
-            AE
+        <div className="closebar flex items-center justify-between">
+          <div className="px-4 py-5 flex items-center gap-3">
+            <div className="w-12 h-12 rounded-lg bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white text-xl shadow-lg border border-white/10">
+              AE
+            </div>
+            <div className="ml-2">
+              <div className="text-lg font-bold text-white">AdsReacher</div>
+              <div className="text-xs text-gray-400">One-click ads</div>
+
+            </div>
           </div>
-          <div className="ml-2">
-            <div className="text-lg font-bold text-white">AdEase</div>
-            <div className="text-xs text-gray-400">One-click ads</div>
+          <div className="close mr-2">
+            <X onClick={() => setMobileOpen(false)}/>
+
           </div>
         </div>
 
@@ -254,7 +268,9 @@ function MobileSidebar({ collapsed, active, onNavigate }) {
               item={it}
               collapsed={false}
               active={active === it.key}
-              onClick={() => onNavigate(it.key)}
+              onClick={() =>
+                onNavigate(it.key)
+              }
             />
           ))}
         </nav>
@@ -374,5 +390,10 @@ function SettingsIcon(props) {
         strokeLinecap="round"
       />
     </svg>
+  );
+}
+function LinkAccounts(props) {
+  return (
+   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cable-icon lucide-cable"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z"/><path d="M17 21v-2"/><path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10"/><path d="M21 21v-2"/><path d="M3 5V3"/><path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"/><path d="M7 5V3"/></svg>
   );
 }

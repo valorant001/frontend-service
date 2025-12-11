@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const WhyAdEase = () => {
+const WhyAdsReacher = () => {
   const features = [
     {
       icon: "⚡",
@@ -31,7 +31,7 @@ const WhyAdEase = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-              Why AdEase?
+              Why AdsReacher?
             </h2>
             <p className="text-gray-500 text-lg mb-12">
               Simple yet powerful dashboard with one-click publishing, analytics and automated budgeting
@@ -87,4 +87,4 @@ const WhyAdEase = () => {
   );
 };
 
-export default WhyAdEase;
+export default WhyAdsReacher;

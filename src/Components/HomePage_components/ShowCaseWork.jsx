@@ -4,7 +4,7 @@ const ShowcaseWork = () => {
   const features = [
     {
       title: "Simple Ad Creation",
-      description: "Upload a photo, write a caption, choose a goal — AdEase formats it perfectly.",
+      description: "Upload a photo, write a caption, choose a goal — AdsReacher formats it perfectly.",
     },
     {
       title: "AI Optimization",
