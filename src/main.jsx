@@ -7,7 +7,7 @@ import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/400-italic.css"; 
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from "./Redux/store.js";
+import  store  from "./Redux/store";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

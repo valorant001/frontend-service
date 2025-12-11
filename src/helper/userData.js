@@ -1,12 +1,17 @@
 import { useDispatch } from "react-redux";
 import Encryption from "./Encryption";
 import { setAccessToken } from "../Redux/AccessToken";
+import store from "../Redux/store";
+ function useData(){
 
-const useData=()=>{
-    // const dispatch = useDispatch();
-    // var token = localStorage.getItem("tkm");
-    // var connectState = localStorage.getItem("state");
-    // var decryptData = Encryption.decryptData(token);
-    // dispatch(setAccessToken({token:decryptData,connectedState:connectState}))
+    var token = localStorage.getItem("tkm");
+    if(!token){
+        return;
+    }
+    var connectState = localStorage.getItem("state");
+
+    var decryptData = Encryption.decryptData(token);
+   
+     store.dispatch(setAccessToken({accessCode:decryptData,connectedState:connectState}));
 }
-export default useData();
+export default useData;

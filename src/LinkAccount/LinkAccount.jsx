@@ -6,11 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setActivateTab } from '../Redux/TabsChangeLinkAccount/TabsChangeRedux';
 import apiCall from '../Network/APIs';
 import Encryption from '../helper/Encryption';
+import { setAccessToken } from '../Redux/AccessToken';
 
 const LinkAccountPage = () => {
    const dispatch = useDispatch();
   const ActiveTab = useSelector((state)=>state.tabsActivate.tabs)  
-  const connectState = useSelector((state)=>state.connectState.connectedState)  
+  const connectsState = useSelector((state)=>state.accessToken.connectedState)  
   const [accounts, setAccounts] = useState({
     facebook: false,
     whatsapp: false
@@ -23,7 +24,7 @@ const LinkAccountPage = () => {
     { date: 'September 2024', amount: '19.99', plan: 'Basic' }
   ];
 
-  const APP_ID = "2656339064721682";
+  const APP_ID = process.env.ADSREACHER_APP_ID;
   const REDIRECT_URI = "https://adsreacher.com/link-accounts";
   const SCOPES = [
     "ads_management",
@@ -45,10 +46,12 @@ const LinkAccountPage = () => {
 
   // Check URL params for OAuth callback
   useEffect(() => {
-
-    if(connectState==="connect_fb"){
-      console.log("connected");
-      
+   
+    if(connectsState==="connect_fb"){
+      setAccounts(prev => ({
+        ...prev,
+        facebook: true
+      }));
     }
     else{
       const urlParams = new URLSearchParams(window.location.search);
@@ -65,19 +68,6 @@ const LinkAccountPage = () => {
       window.history.replaceState({}, '', window.location.pathname);
     }
     }
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const code = urlParams.get("code");
-    // const responseType = urlParams.get("state");
-
-    // if (code && responseType === "connect_fb") {
-    //   setAccounts(prev => ({
-    //     ...prev,
-    //     facebook: true
-    //   }));
-    //   saveUserToken(code,responseType);
-    //   // Clean URL
-    //   window.history.replaceState({}, '', window.location.pathname);
-    // }
   }, []);
 
   const handleConnectFacebook = () => {
@@ -98,7 +88,8 @@ const LinkAccountPage = () => {
   const toggleAccount = (account) => {
     if (account === 'facebook') {
       if (accounts.facebook) {
-        // Disconnect
+        localStorage.removeItem("state");
+         dispatch(setAccessToken({accessCode:null,connectedState:null}));
         setAccounts(prev => ({ ...prev, facebook: false }));
       } else {
         // Connect via OAuth
@@ -115,8 +106,8 @@ const LinkAccountPage = () => {
     const encryptedData = Encryption.encryptData(decodeJson);
     localStorage.setItem("tkm",encryptedData);
     localStorage.setItem("state",state);
+    dispatch(setAccessToken({accessCode:decodeJson,connectedState:state}));
     changeTabs(1);
-
   }
   return (
     <SidebarLayout>

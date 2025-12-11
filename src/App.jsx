@@ -24,8 +24,11 @@ import userData from './helper/userData'
 
 
 function App() {
-  useClarity();
-  // userData();
+  useClarity();  
+  userData();
+  //var connectState = localStorage.getItem("tkm");
+  //console.log(connectState);
+  
   const [count, setCount] = useState(0)
   
   return (
