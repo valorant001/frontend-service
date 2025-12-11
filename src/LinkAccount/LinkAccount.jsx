@@ -4,10 +4,13 @@ import SidebarLayout from '../Sidebar/Sidebar';
 import ListofPages from './ListofPages';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActivateTab } from '../Redux/TabsChangeLinkAccount/TabsChangeRedux';
+import apiCall from '../Network/APIs';
+import Encryption from '../helper/Encryption';
 
 const LinkAccountPage = () => {
    const dispatch = useDispatch();
   const ActiveTab = useSelector((state)=>state.tabsActivate.tabs)  
+  const connectState = useSelector((state)=>state.connectState.connectedState)  
   const [accounts, setAccounts] = useState({
     facebook: false,
     whatsapp: false
@@ -42,7 +45,13 @@ const LinkAccountPage = () => {
 
   // Check URL params for OAuth callback
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
+
+    if(connectState==="connect_fb"){
+      console.log("connected");
+      
+    }
+    else{
+      const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
     const responseType = urlParams.get("state");
 
@@ -51,9 +60,24 @@ const LinkAccountPage = () => {
         ...prev,
         facebook: true
       }));
+      saveUserToken(code,responseType);
       // Clean URL
       window.history.replaceState({}, '', window.location.pathname);
     }
+    }
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const code = urlParams.get("code");
+    // const responseType = urlParams.get("state");
+
+    // if (code && responseType === "connect_fb") {
+    //   setAccounts(prev => ({
+    //     ...prev,
+    //     facebook: true
+    //   }));
+    //   saveUserToken(code,responseType);
+    //   // Clean URL
+    //   window.history.replaceState({}, '', window.location.pathname);
+    // }
   }, []);
 
   const handleConnectFacebook = () => {
@@ -85,6 +109,15 @@ const LinkAccountPage = () => {
     }
   };
 
+  async function saveUserToken(code,state) {
+    const calltoAction = await apiCall(code)
+    const decodeJson = calltoAction.data['access_token'];
+    const encryptedData = Encryption.encryptData(decodeJson);
+    localStorage.setItem("tkm",encryptedData);
+    localStorage.setItem("state",state);
+    changeTabs(1);
+
+  }
   return (
     <SidebarLayout>
     <div className="min-h-screen bg-black text-white">

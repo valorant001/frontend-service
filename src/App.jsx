@@ -18,14 +18,16 @@ import ConnectFacebook from './TestingComponent'
 import useClarity from './helper/Clarity'
 import ManageAccounts from './LinkAccount/LinkAccount'
 import LinkAccountPage from './LinkAccount/LinkAccount'
+import userData from './helper/userData'
 
 
 
 
 function App() {
   useClarity();
+  // userData();
   const [count, setCount] = useState(0)
-
+  
   return (
     <>
       <Routes>
